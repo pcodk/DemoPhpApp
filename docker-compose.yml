@@ -1,0 +1,22 @@
+version: "2"
+services:
+  application:
+    image: tianon/true
+    volumes:
+      - .:/var/www/docroot
+  nginx:
+    image: pcodk/nginx
+    environment:
+      NGINX_WEBROOT: "/var/www/docroot/public"
+      NGINX_PHP_HOST_AND_PORT: "php:9000"
+    ports:
+      - "80:80"
+    volumes_from:
+      - application
+  php:
+    image: pcodk/poc-php:7.2-fpm
+    volumes_from:
+      - application
+
+  redis:
+    image: redis:alpine
