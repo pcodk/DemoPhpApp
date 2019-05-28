@@ -1,0 +1,18 @@
+version: "2"
+services:
+  nginx:
+    image: pcodk/nginx
+    environment:
+      NGINX_WEBROOT: "/var/www/docroot/public"
+      NGINX_PHP_HOST_AND_PORT: "php:9000"
+    ports:
+      - "80:80"
+    volumes_from:
+      - php
+  php:
+    build:
+      context: ./
+      dockerfile: docker/App/Dockerfile
+
+  redis:
+    image: redis:alpine

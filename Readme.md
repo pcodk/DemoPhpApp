@@ -10,3 +10,7 @@ docker-compose run php composer install
 ```
 
 Then open your borser on locahost:80 (or change the docker-compose file to use another port.)
+
+
+The docker-compose-full.yml contain an example of how to dynamically buils container as part of the docker compose 
+manifest.
